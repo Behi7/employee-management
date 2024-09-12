@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="row clear: both">
+      <div class="col-xl-10 col-lg-10">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Smen</h4>
+          </div>
+          <div class="card-body">
+            <div class="basic-form">
+              <form method="post">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4 class="card-title">Smen yaratish</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="mb-3">
+                          <input type="text" class="form-control input-rounded" placeholder="Smen nomi" value="{{ staff.f_name }}" name="name">
+                        </div>
+                        <div class="mb-3">
+                          <input type="text" class="form-control input-rounded" placeholder="Boshlanish vaqti" value="{{ staff.l_name }}" name="time_start">
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control input-rounded" placeholder="Tugash vaqti" value="{{ staff.l_name }}" name="time_stop">
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Saqlash</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

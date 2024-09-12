@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- container starts -->
+            <div class="container-fluid">
+				
+                <!-- row -->
+				<div class="element-area">
+					<div class="demo-view">
+						<div class="container-fluid pt-0 ps-0 pe-lg-4 pe-0">
+							<div class="row">
+					<!-- Column starts -->
+                    <div class="col-xl-12">
+                        <div class="card dz-card" id="bootstrap-table5">
+                            <div class="card-header flex-wrap d-flex justify-content-between  border-0">
+								<div>
+                                	<h4 class="card-title">Smenlar</h4>
+								</div>
+							</div>
+                           	<!-- tab-content -->	
+							<div class="tab-content" id="myTabContent-4">
+								<div class="tab-pane fade show active" id="leftPosition" role="tabpanel" aria-labelledby="home-tab-4">
+									<a href="{% url 'createshift' %}"><button class="btn btn-success">Qoshish</button></a>
+									<div class="card-body pt-0">
+										
+										<div class="table-responsive">
+											
+                                            <table class="table table-bordered table-responsive-sm">
+                                                <thead>
+                                                    <tr>
+                                                        <th><strong>#</strong></th>
+                                                        <th><strong>Nomi</strong></th>
+                                                        <th><strong>Boshlanish vaqti</strong></th>
+                                                        <th><strong>Tugash vaqti</strong></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for shift in shifts %}
+                                                    <tr>
+                                                        <td><strong>{{ forloop.counter }}</strong></td>
+                                                        <td>{{ shift.name }}</td>
+                                                        <td>{{ shift.time_start|date:" H : i"  }}</td>
+                                                        <td>{{ shift.time_stop|date:" H : i"  }}</td>
+                                                        <td >
+                                                            <a href="{% url 'deleteshift' shift.id %}" class="btn btn-danger" type="submit"><i class="fa fa-trash"></i> O'chirish</a>
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+
+                                                </tbody>
+                                            </table>
+										</div>
+									</div>
+								</div>
+							
+						</div>
+							<!-- /tab-content -->		
+                           
+                        </div>
+                    </div>
+                    <!-- Column ends -->
+					
+				</div>
+					</div>
+				</div>			
+            </div>
+    </div>
+{% endblock %}

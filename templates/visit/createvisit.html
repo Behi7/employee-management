@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="content-body">
+            <!-- container starts -->
+            <div class="container-fluid">
+				
+                <!-- row -->
+				<div class="element-area">
+					<div class="demo-view">
+						<div class="container-fluid pt-0 ps-0 pe-lg-4 pe-0">
+							<div class="row">
+								<!-- Column starts -->
+								<div class="col-xl-12">
+									<div class="card dz-card" id="bootstrap-table1">
+										<div class="card-header flex-wrap border-0">
+											<div>
+												<h4 class="card-title">Yoqlama</h4>
+											</div>
+										</div>
+										<!--tab-content-->
+										<div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="Preview" role="tabpanel" aria-labelledby="home-tab">
+												<div class="card-body pt-0">
+													<div class="table-responsive">
+														<table class="table table-responsive-md">
+															<thead>
+																<tr>
+																	<th style="width:80px;"><strong>#</strong></th>
+																	<th><strong>Ism Familiya</strong></th>
+																	<th><strong>Ishi</strong></th>
+																	<th>Harakat</th>
+																</tr>
+															</thead>
+															<tbody>
+																{% for staff in staffes %}
+																<tr>
+																	<td><strong>{{forloop.counter}}</strong></td>
+																	<td>{{ staff.l_name }} {{ staff.f_name }}</td>
+																	<td>{{staff.position.name}}</td>
+																	<td>
+																		<button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModalCenter{{ staff.id }}">Keldi</button>																	</td>
+																</tr>
+																{% endfor %}
+
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<!-- /Recent Payments Queue -->	
+											</div>
+										</div>
+										<!--/tab-content-->
+									</div>
+								</div>
+							</div>
+					
+				</div>
+					</div>
+					</div>
+				</div>			
+            </div>
+			{% for staff in staffes %}
+			<div class="modal fade" id="exampleModalCenter{{ staff.id }}">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Yoqlama</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal">
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Kelganlikni tasdiqlash</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Orqaga</button>
+							<a href="{% url 'createattadance' staff.id %}" type="submit" class="btn btn-primary">Keldi</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+ {% endblock %}
